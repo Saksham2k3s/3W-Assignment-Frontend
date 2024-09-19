@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+
 const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 
 // Fetch all users action

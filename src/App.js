@@ -6,7 +6,7 @@ import UserList from './components/UserList';
 import './App.css';
 import { Toaster } from 'react-hot-toast';
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function App() {
   const dispatch = useDispatch();
