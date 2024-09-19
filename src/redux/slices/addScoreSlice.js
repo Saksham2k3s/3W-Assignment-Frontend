@@ -9,7 +9,11 @@ export const addScore = createAsyncThunk(
   "score/addScore",
   async (id, { rejectWithValue }) => {
     try {
-      const result = await axios.put(`${REACT_APP_BASE_URL}/addscore/${id}`);
+      const result = await axios.put(`${REACT_APP_BASE_URL}/addscore/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       return result.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Failed to add score');

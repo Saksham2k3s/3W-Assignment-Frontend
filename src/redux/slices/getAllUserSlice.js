@@ -9,7 +9,11 @@ export const fetchAllUsers = createAsyncThunk(
   "fetchAllUsers",
   async (_, { rejectWithValue }) => { // Correct the thunk function parameters
     try {
-      const result = await axios.get(`${REACT_APP_BASE_URL}/users`);
+      const result = await axios.get(`${REACT_APP_BASE_URL}/users`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(result.data);
       return result.data;
     } catch (error) {
