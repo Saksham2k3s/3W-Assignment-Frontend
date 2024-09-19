@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchAllUsers } from './redux/slices/getAllUserSlice';
+import axios from 'axios';
+import UserList from './components/UserList';
 import './App.css';
+import { Toaster } from 'react-hot-toast';
+
+axios.defaults.withCredentials = true;
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <div className='min-w-screen' >
+        {/* Toast Notifications */}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            zIndex: 9999,
+          },
+        }}
+      />
+
+      {/* Main Content */}
+      <div className=' min-h-screen font-serif w-full '>
+        <UserList />
+      </div>
+     </div>
+    </>
   );
 }
 
